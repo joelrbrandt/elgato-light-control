@@ -1,0 +1,17 @@
+{
+  "name": "elgato-light-controller",
+  "version": "1.0.0",
+  "description": "Control an Elgato light",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Joel Brandt <joelrbrandt@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bonjour": "^3.5.0",
+    "commander": "^5.1.0",
+    "node-fetch": "^2.6.0"
+  }
+}
