@@ -2,11 +2,11 @@ const Bonjour = require("bonjour");
 
 const fetch = require("node-fetch");
 
-const { program } = require('commander');
-program.version('0.0.1');
+const { program } = require("commander");
+program.version("0.0.1");
 
-const TEMP_MIN=143 // == 7000K
-const TEMP_MAX=344 // == 2900K
+const TEMP_MIN=143; // == 7000K
+const TEMP_MAX=344; // == 2900K
 
 const getLight = async () => {
   const bonjour = new Bonjour();
@@ -17,13 +17,13 @@ const getLight = async () => {
       resolve(service);
     });
   })).finally(() => bonjour.destroy());
-}
+};
 
 const takeAction = async (command) => {
-  const options = {}
+  const options = {};
   if (command) {
     options.method = "put";
-    options.body = JSON.stringify(command)
+    options.body = JSON.stringify(command);
   }
 
   const light = await getLight();
@@ -32,15 +32,15 @@ const takeAction = async (command) => {
   const res = await fetch("http://" + light.addresses[0] + ":9123/elgato/lights", options);
   const body = await res.json();
   console.log("status", body);
-  
-}
+
+};
 
 const mapBrightness = (v) => {
   console.log("input", v);
   const result = Math.floor(v/100*(TEMP_MAX-TEMP_MIN) + TEMP_MIN);
   console.log("output", result);
   return result;
-}
+};
 
 program
   .command("on")
@@ -69,6 +69,6 @@ program
 
 const main = async () => {
   program.parseAsync(process.argv);
-}
+};
 
 main();

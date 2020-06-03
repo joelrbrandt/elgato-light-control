@@ -13,5 +13,8 @@
     "bonjour": "^3.5.0",
     "commander": "^5.1.0",
     "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0"
   }
 }
